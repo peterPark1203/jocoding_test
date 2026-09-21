@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로또 번호 생성기</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #f59e0b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    color: var(--text);
+    font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+  }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  p.subtitle {
+    color: var(--muted);
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  button {
+    background: var(--accent);
+    color: #1e1b4b;
+    border: none;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    margin-bottom: 32px;
+  }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.55);
+  }
+  button:active {
+    transform: translateY(0);
+  }
+  .results {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .set-row {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  }
+  .set-label {
+    font-size: 13px;
+    color: var(--muted);
+    min-width: 42px;
+    font-weight: 600;
+  }
+  .balls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  /* 로또 공식 번호대별 색상 */
+  .c1 { background: #fbc400; color: #3a2e00; } /* 1-10 노랑 */
+  .c2 { background: #69c8f2; }                 /* 11-20 파랑 */
+  .c3 { background: #ff7272; }                 /* 21-30 빨강 */
+  .c4 { background: #aaa; }                    /* 31-40 회색 */
+  .c5 { background: #b0d840; color: #1a2e00; } /* 41-45 초록 */
+
+  footer {
+    margin-top: 32px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>🎱 로또 번호 생성기</h1>
+  <p class="subtitle">버튼을 누르면 서로 다른 5세트의 번호가 나옵니다 (1~45, 각 6개)</p>
+
+  <button id="generateBtn">번호 생성하기</button>
+
+  <div class="results" id="results"></div>
+
+  <footer>※ 실제 당첨 확률과 무관한 무작위 생성기입니다.</footer>
+
+<script>
+function getBallClass(n) {
+  if (n <= 10) return 'c1';
+  if (n <= 20) return 'c2';
+  if (n <= 30) return 'c3';
+  if (n <= 40) return 'c4';
+  return 'c5';
+}
+
+function generateOneSet() {
+  const numbers = new Set();
+  while (numbers.size < 6) {
+    numbers.add(Math.floor(Math.random() * 45) + 1);
+  }
+  return Array.from(numbers).sort((a, b) => a - b);
+}
+
+function generateFiveSets() {
+  const container = document.getElementById('results');
+  container.innerHTML = '';
+
+  for (let i = 1; i <= 5; i++) {
+    const set = generateOneSet();
+
+    const row = document.createElement('div');
+    row.className = 'set-row';
+
+    const label = document.createElement('div');
+    label.className = 'set-label';
+    label.textContent = `${i}세트`;
+    row.appendChild(label);
+
+    const ballsWrap = document.createElement('div');
+    ballsWrap.className = 'balls';
+
+    set.forEach(num => {
+      const ball = document.createElement('div');
+      ball.className = `ball ${getBallClass(num)}`;
+      ball.textContent = num;
+      ballsWrap.appendChild(ball);
+    });
+
+    row.appendChild(ballsWrap);
+    container.appendChild(row);
+  }
+}
+
+document.getElementById('generateBtn').addEventListener('click', generateFiveSets);
+
+// 최초 로드 시 자동으로 한 번 생성
+generateFiveSets();
+</script>
+
+</body>
+</html>
