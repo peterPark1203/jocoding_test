@@ -184,6 +184,7 @@
   .verdict-emoji { font-size: 56px; line-height: 1; margin-bottom: 8px; }
   .verdict-title { font-size: 22px; font-weight: 800; margin: 0 0 4px; }
   .verdict-sub { color: var(--muted); font-size: 14px; margin: 0; }
+  .verdict-breakdown { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
 
   .bar-row {
     background: var(--card);
@@ -252,6 +253,7 @@
       <div class="verdict-emoji" id="verdictEmoji">🐾</div>
       <p class="verdict-title" id="verdictTitle"></p>
       <p class="verdict-sub" id="verdictSub"></p>
+      <p class="verdict-breakdown" id="verdictBreakdown"></p>
     </div>
     <div id="barList"></div>
   </div>
@@ -342,6 +344,8 @@ function renderResult(predictions) {
   }
   document.getElementById('verdictTitle').textContent = title;
   document.getElementById('verdictSub').textContent = sub;
+  document.getElementById('verdictBreakdown').textContent =
+    sorted.map(p => `${emojiFor(p.className)} ${p.className} ${Math.round(p.probability * 100)}%`).join('   ·   ');
 
   const barList = document.getElementById('barList');
   barList.innerHTML = '';
@@ -376,13 +380,16 @@ const uploadStatus = document.getElementById('uploadStatus');
 fileInput.addEventListener('change', () => {
   const file = fileInput.files[0];
   if (!file) return;
+  testUploadBtn.disabled = true;
+  document.getElementById('result').hidden = true;
   const reader = new FileReader();
   reader.onload = (e) => {
+    previewImg.onload = () => {
+      testUploadBtn.disabled = false;
+    };
     previewImg.src = e.target.result;
     previewContainer.style.display = 'block';
     uploadLabelText.textContent = file.name;
-    testUploadBtn.disabled = false;
-    document.getElementById('result').hidden = true;
   };
   reader.readAsDataURL(file);
 });
@@ -393,10 +400,20 @@ testUploadBtn.addEventListener('click', async () => {
   testUploadBtn.textContent = '분석 중...';
   try {
     await loadModel();
+  } catch (err) {
+    showModelError(uploadStatus);
+    testUploadBtn.disabled = false;
+    testUploadBtn.textContent = '테스트하기';
+    return;
+  }
+  try {
+    await previewImg.decode();
     const predictions = await model.predict(previewImg);
     renderResult(predictions);
   } catch (err) {
-    showModelError(uploadStatus);
+    uploadStatus.hidden = false;
+    uploadStatus.className = 'status-msg error';
+    uploadStatus.textContent = '이미지 분석에 실패했습니다. 사진을 다시 선택해 시도해주세요.';
   } finally {
     testUploadBtn.disabled = false;
     testUploadBtn.textContent = '테스트하기';
