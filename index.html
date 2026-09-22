@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1~45 사이 번호로 서로 겹치지 않는 로또 번호 5세트를 무료로 무작위 생성합니다. 번호대별 공식 색상 적용, 다크/라이트 모드 지원.">
 <title>로또 번호 생성기</title>
 <meta name="google-adsense-account" content="ca-pub-5756619562265028">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5756619562265028"
@@ -230,6 +231,22 @@
     margin: 0 0 16px;
     font-size: 20px;
   }
+
+  .info {
+    width: 100%;
+    max-width: 480px;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+    box-shadow: 0 2px 10px var(--shadow);
+    line-height: 1.7;
+  }
+  .info h2 { margin: 0 0 8px; font-size: 18px; }
+  .info h3 { margin: 20px 0 4px; font-size: 15px; }
+  .info p { margin: 4px 0; font-size: 14px; color: var(--text); }
+
+  footer a { color: var(--muted); }
 </style>
 </head>
 <body>
@@ -246,7 +263,21 @@
 
   <div class="results" id="results"></div>
 
-  <div class="feedback">
+  <div class="info">
+    <h2>ℹ️ 이용 안내</h2>
+    <p>"번호 생성하기" 버튼을 누르면 1부터 45까지의 숫자 중에서 중복 없이 6개씩 뽑은 번호 조합을 5세트 만들어 드립니다. 세트별로 공을 색상별로 구분해 실제 로또 용지처럼 한눈에 확인할 수 있습니다.</p>
+
+    <h3>Q. 당첨 확률이 더 높아지나요?</h3>
+    <p>아니요. 완전히 무작위로 생성되는 번호이며, 실제 로또 당첨 확률과는 무관합니다. 재미로만 이용해 주세요.</p>
+
+    <h3>Q. 번호가 마음에 안 들면 어떻게 하나요?</h3>
+    <p>버튼을 다시 누르면 새로운 5세트가 즉시 생성됩니다. 몇 번이든 원하는 만큼 다시 뽑을 수 있습니다.</p>
+
+    <h3>Q. 생성된 번호가 저장되나요?</h3>
+    <p>아니요. 번호는 브라우저 안에서만 계산되며 서버로 전송되거나 저장되지 않습니다. 새로고침하면 사라집니다.</p>
+  </div>
+
+  <div class="feedback" id="feedback">
     <h2>💬 의견 보내기</h2>
     <p class="subtitle">건의사항이나 버그를 알려주세요.</p>
 
@@ -271,7 +302,10 @@
     <div id="disqus_thread"></div>
   </div>
 
-  <footer>※ 실제 당첨 확률과 무관한 무작위 생성기입니다.</footer>
+  <footer>
+    ※ 실제 당첨 확률과 무관한 무작위 생성기입니다.<br>
+    <a href="animal-test.html">동물상 테스트</a> · <a href="about.html">사이트 소개</a> · <a href="privacy.html">개인정보처리방침</a>
+  </footer>
 
 <script>
 function getBallClass(n) {

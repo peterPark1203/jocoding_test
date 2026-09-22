@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="로또 번호 생성기와 동물상 테스트 사이트의 개인정보처리방침입니다. 광고, 댓글, 문의 폼에서 수집되는 정보와 쿠키 사용에 대해 안내합니다.">
+<meta name="google-adsense-account" content="ca-pub-5756619562265028">
+<title>개인정보처리방침</title>
+<script>
+  (function () {
+    const saved = localStorage.getItem('theme');
+    const theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<style>
+  :root {
+    --bg: #0f172a;
+    --bg-grad-1: #0f172a;
+    --bg-grad-2: #1e1b4b;
+    --card: #1e293b;
+    --accent: #f59e0b;
+    --accent-text: #1e1b4b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --shadow: rgba(0,0,0,0.25);
+  }
+  html[data-theme="light"] {
+    --bg: #f8fafc;
+    --bg-grad-1: #f1f5f9;
+    --bg-grad-2: #e0e7ff;
+    --card: #ffffff;
+    --accent: #f59e0b;
+    --accent-text: #1e1b4b;
+    --text: #1e293b;
+    --muted: #64748b;
+    --shadow: rgba(15, 23, 42, 0.12);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2));
+    color: var(--text);
+    font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .top-bar {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .top-bar a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  .top-bar a:hover { color: var(--text); }
+  #themeToggle {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--muted);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  #themeToggle:hover { box-shadow: 0 2px 8px var(--shadow); }
+
+  .content {
+    width: 100%;
+    max-width: 640px;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px var(--shadow);
+    line-height: 1.7;
+  }
+  h1 { font-size: 26px; margin-top: 0; }
+  h2 { font-size: 18px; margin: 28px 0 8px; }
+  p, li { color: var(--text); font-size: 15px; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  .muted { color: var(--muted); font-size: 13px; }
+
+  footer { margin-top: 32px; color: var(--muted); font-size: 12px; text-align: center; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html">← 홈으로</a>
+    <button id="themeToggle" aria-label="다크/화이트 모드 전환">🌙 다크</button>
+  </div>
+
+  <div class="content">
+    <h1>개인정보처리방침</h1>
+    <p class="muted">최종 수정일: 2026년 9월 22일</p>
+
+    <p>본 사이트(로또 번호 생성기, 동물상 테스트)는 개인 개발자가 운영하는 비상업적 웹 서비스로, 방문자의 개인정보를 소중히 다루기 위해 아래와 같이 개인정보처리방침을 안내합니다.</p>
+
+    <h2>1. 수집하는 정보</h2>
+    <p>본 사이트는 회원가입 없이 이용할 수 있으며, 다음의 경우에만 정보가 수집될 수 있습니다.</p>
+    <ul>
+      <li><strong>의견 보내기(피드백) 양식</strong>: 이름, 이메일 주소, 문의 내용을 입력하시면 Formspree를 통해 운영자에게 전달됩니다.</li>
+      <li><strong>댓글 기능</strong>: 댓글 작성 시 Disqus가 닉네임, 이메일, IP 주소 등 댓글 서비스 이용에 필요한 정보를 자체 정책에 따라 수집할 수 있습니다.</li>
+      <li><strong>동물상 테스트에 업로드하는 사진</strong>: 업로드한 이미지는 브라우저 내에서만 분석되며, 서버로 전송되거나 저장되지 않습니다.</li>
+    </ul>
+
+    <h2>2. 쿠키 및 광고</h2>
+    <p>본 사이트는 Google AdSense를 통해 광고를 게재하며, Google 및 광고 파트너가 쿠키를 사용해 방문자의 관심사에 기반한 맞춤 광고를 제공할 수 있습니다. 또한 Disqus 댓글 위젯도 서비스 제공을 위해 자체 쿠키를 사용할 수 있습니다.</p>
+    <p>Google이 쿠키를 사용하는 방식에 대한 자세한 내용과 맞춤 광고 설정 변경은 <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 광고 정책 페이지</a>에서 확인하실 수 있습니다.</p>
+
+    <h2>3. 제3자 서비스</h2>
+    <p>본 사이트는 다음과 같은 제3자 서비스를 사용하며, 각 서비스는 자체 개인정보처리방침을 따릅니다.</p>
+    <ul>
+      <li>Google AdSense (광고)</li>
+      <li>Disqus (댓글)</li>
+      <li>Formspree (문의 양식 전송)</li>
+    </ul>
+
+    <h2>4. 이용자의 권리</h2>
+    <p>이용자는 언제든지 브라우저 설정을 통해 쿠키 저장을 거부하거나 삭제할 수 있으며, 맞춤 광고 수신을 원하지 않을 경우 <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google 광고 설정</a>에서 개인 맞춤 광고를 비활성화할 수 있습니다.</p>
+
+    <h2>5. 문의</h2>
+    <p>개인정보처리방침에 대해 궁금한 점이 있으시면 <a href="index.html#feedback">홈 화면의 의견 보내기 양식</a>을 통해 문의해 주세요.</p>
+
+    <h2>6. 방침 변경</h2>
+    <p>본 방침은 법령이나 서비스 변경에 따라 수정될 수 있으며, 변경 시 이 페이지를 통해 공지합니다.</p>
+  </div>
+
+  <footer>
+    <a href="index.html">로또 번호 생성기</a> · <a href="animal-test.html">동물상 테스트</a> · <a href="about.html">사이트 소개</a>
+  </footer>
+
+<script>
+function updateThemeButton(theme) {
+  document.getElementById('themeToggle').textContent = theme === 'light' ? '☀️ 화이트' : '🌙 다크';
+}
+function initThemeToggle() {
+  const root = document.documentElement;
+  updateThemeButton(root.getAttribute('data-theme') || 'dark');
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') || 'dark';
+    const next = current === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateThemeButton(next);
+  });
+}
+initThemeToggle();
+</script>
+</body>
+</html>
