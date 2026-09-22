@@ -295,8 +295,8 @@ function showTab(tab) {
 tabUploadBtn.addEventListener('click', () => showTab('upload'));
 tabWebcamBtn.addEventListener('click', () => showTab('webcam'));
 
-// 모델 로딩
-const MODEL_URL = './my_model/';
+// 모델 로딩 (Teachable Machine에서 제공하는 호스팅 모델 URL)
+const MODEL_URL = 'https://teachablemachine.withgoogle.com/models/use-gq3K5/';
 let model = null;
 let modelLoadPromise = null;
 
@@ -362,7 +362,7 @@ function renderResult(predictions) {
 function showModelError(statusEl) {
   statusEl.hidden = false;
   statusEl.className = 'status-msg error';
-  statusEl.textContent = '모델을 불러오지 못했습니다. my_model 폴더에 model.json, metadata.json, weights.bin 파일이 있는지 확인해주세요.';
+  statusEl.textContent = '모델을 불러오지 못했습니다. 인터넷 연결과 모델 URL을 확인해주세요.';
 }
 
 // 업로드 탭
