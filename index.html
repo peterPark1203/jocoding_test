@@ -51,8 +51,16 @@
     width: 100%;
     max-width: 480px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
   }
+  .top-bar a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .top-bar a:hover { color: var(--text); }
   #themeToggle {
     background: var(--card);
     color: var(--text);
@@ -224,6 +232,7 @@
 <body>
 
   <div class="top-bar">
+    <a href="animal-test.html">🐶🐱 동물상 테스트</a>
     <button id="themeToggle" aria-label="다크/화이트 모드 전환">🌙 다크</button>
   </div>
 
